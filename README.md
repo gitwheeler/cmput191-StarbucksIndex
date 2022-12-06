@@ -7,15 +7,12 @@ Purchasing Power Parity is essentially a concept that describes how goods and se
 Starbucks coffee is a luxury item that remains accessible without being an essential item. Anywhere you go in the world, you can expect to order a standard Starbucks coffee and recieve the same product; even if the other menu items may rotate across the board. Essentially, Starbucks is a brand that exports its base products around the globe. If you decided to travel to another country today, you could order the same comfort drink there as you could back home. 
 
 ## So, How do the Prices Compare?
-Let's explore how I compared these prices:
+
 ``` 
 r = requests.get('https://www.finder.com/ca/starbucks-index') 
 page = BeautifulSoup(r.text, 'html.parser') 
 starbucks = page.find_all('table')[0] 
-```
-Here, I webscraped an online index of global starbucks prices in CAD. This source used data from 76 countries to compare the price Starbucks coffee globally. This data was the first 'table' on the website, so I was able to locate it using an index of 0. 
 
-```
 import pandas as pd
 def scrape_table(table):
     df = pd.read_html(str(table))
@@ -43,12 +40,9 @@ Min_Wage = Table.read_table('/content/drive/MyDrive/Colab Notebooks/hourlywage.c
 Min_Wage= Min_Wage.drop("COUNTRY","SERIES","Series","PERIOD","TIME","Unit","PowerCode Code","PowerCode","Reference Period Code", "Reference Period", "Flag Codes", "Flags")
 ```
 In these files, I webscraped or used CSV files to return information regarding: The cost in CAD of stabucks coffee globally, Conversion rates, Sales Tax rates, currency codes, and, for my explanatory factor, the minimum wage in several countries.
-All of these files, except for one, had the column "Country"
+All of these files, except for one, had the column **"Country"**
 
 **Clearly, this data needs to be cleaned and combined in order for us to gleam any relevant information from it.**
-
-**So far, almost every graph I selected had at least one column in common:** **_Country_**
-There was one exception, as mentioned above, and it will be addressed later
 
 ```
 def UPCOUNTRY(column):
