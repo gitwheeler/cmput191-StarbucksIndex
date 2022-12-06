@@ -231,8 +231,28 @@ This graph does not appear to have a strong correlation; however, if we add a li
 
 You can see that there is a linear association, as the price of coffee increases, so does the amount of money people make. There are a few outliers; however, the trend remains even without the occasional extreme example.
 
-#Why would Minimum Wage Effect The Price of Coffee?
+# Why would Minimum Wage Effect The Price of Coffee?
 
-If you recall, I mentioned that Starbucks would be considered a **_luxury_** to most people. 
+If you recall, I mentioned that Starbucks would be considered a **_luxury_** to most people. Since it is not a need, people will likely not purchase a coffee unless they can afford it. As such, people who make less money would pay less for a cup of coffee, and people who make more money would be more willing to spend more. 
+There are several other factors at play as well, factors which may have a stronger correlation with the data, however, to a certain extent this relationship did prove to explain the results. 
 
-theme: minimal
+# Conclusion
+
+## In the end,
+
+Canada has fairly cheap starbucks coffee in comparison to the other countries, and the minimum wage a country creates does have a relation to the cost of a coffee. 
+
+Mexico had the cheapest minimum wage, Luxembourg had the greatest minimum wage.
+
+**Colombia had the cheapest coffee, Luxembourg had the most expensive coffee.**
+
+Despite using the same currency, several EUR countries had different prices for their Starbucks coffee. IN CAD units, these prices ranged from $3.63-$6.82. 
+
+
+### Difficulties
+
+I lost quite a bit of data when I was joining tables. If I had needed to include every country from the original source I would likely have needed to check every webscraped source to ensure they had the same len, or a greater len than the original data source.
+Moreover, I lost the USD conversion, which was easy to find online and use; however, this was a conversion rate which would have been useful to maintain.
+
+Minimum wage does not appear to be the best predictor for the cost of coffee; however, there are several confounding factors that all interact to influence this, and minimum wage is certainly part of the equation. Tourism, GDP, demand, import fees, duties and tariffs, and several other factors could influence how expensive a product is in each country. 
+
