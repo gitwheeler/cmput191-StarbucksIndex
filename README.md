@@ -4,9 +4,9 @@
 ## Background
 Purchasing Power Parity is essentially a concept that describes how goods and services should cost the same amount in different countries once exhange rates have been applied. In reality, no two items will be priced exactly the same, due to several factors, but using this concept, we can determine how pricey an item is in different countries compared to one another. 
 ## Starbucks
-Starbucks is a luxury item that remains accessible without being an essential item. Anywhere you go in the world, you can expect to order a standard Starbucks coffee and recieve the same product; even if the other menu items may rotate across the board. Essentially, Starbucks is a brand that exports its base products around the globe. If you decided to travel to another country today, you could order the same comfort drink there as you could back home. 
+Starbucks coffee is a luxury item that remains accessible without being an essential item. Anywhere you go in the world, you can expect to order a standard Starbucks coffee and recieve the same product; even if the other menu items may rotate across the board. Essentially, Starbucks is a brand that exports its base products around the globe. If you decided to travel to another country today, you could order the same comfort drink there as you could back home. 
 
-## So, How do the prices compare?
+## So, How do the Prices Compare?
 Let's explore how I compared these prices:
 ``` 
 r = requests.get('https://www.finder.com/ca/starbucks-index') 
@@ -115,7 +115,7 @@ almostfull = almostfull.join("COUNTRY", codes, 'COUNTRY')
 One at a time, I joined each table to eachother using the values in the "Country" columns I had worked on before. Some graphs had different information; however, if the data was not present in each data source it was not stored in the new 'almostfull' table. Personally, I chose to lose this data because I only needed 10 countries (including Canada) in my final data source. 
 After this step, there were 21 countries remaining in the data.
 
-**Now, there was still one table of information I had collected which was not included in my final table**
+** Now, there was still one table of information I had collected which was not included in my final table**
 
 ```
 full= almostfull.join("Code", conversion_codes, "Currency\xa0Code")
@@ -126,7 +126,7 @@ I was able to use the Currency Codes to join this graph to the others thanks to 
 Surprisingly, quite a bit of data was lost here as well.
 In the end, there was a total of **18 countries** in the data.
 
-#Now that All of the Information is together, we need to Clean it
+# Now that All of the Information is together, we need to Clean it
 
 ```
 def scrubadub(clean):
@@ -166,4 +166,17 @@ full = full.drop("salesTax","Rate","Ranking $$coffee")
 full = full.relabel("Cost of Coffee", "Cost of Coffee(CAD)")
 full = full.relabel("CAD_MinWage/hour", "MinWage/hour(CAD)")
 ```
-Then, 
+In order to meet some of the requirements of the assignment, I had to 'backtrack' a bit. 
+
+Here, I am taking the cost of a coffee in CAD, converting it into it's original units, and then adding the price of sales tax to the value (rounded to 2 decimal places). Once I had the new information I once again dropped any irrelevant data that was no longer needed to make any conversions. 
+
+```
+StarbucksIndex = full
+StarbucksIndex = StarbucksIndex.sort("Cost of Coffee(CAD)")
+```
+
+Finally, I was satisfied with my data, especially since my data source was small enough that I could visually confirm that were were no odd values remaining in my data. (ex. no nan values, no strings, and no gaps in the data).
+As such, I made sure my table was renamed something that was relevant to the purpose of the project, and I organised it from least to most expensive coffee prices (CAD).
+
+# The data is Clean, Now What?
+## Presenting the Graphs
