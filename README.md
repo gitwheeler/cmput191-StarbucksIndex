@@ -188,10 +188,7 @@ subtraction = StarbucksIndex.apply(difference,"Cost of Coffee(CAD)")
 StarbucksIndex = StarbucksIndex.append_column("Difference", subtraction)
 ```
 
-Here, I chose to use the index of Canada, as the data had already been sorted. However, this code would need to be changed to accomodate the data if the table were presented in any other order. 
-For our current purposes, I was able to simply use the index of the graph to select for the value of canadian money. 
-Then, using apply, I was able to calculate the difference for each country as it compared to the price of Canadian Coffee. 
-Once again, I appended the new array I created to the original table. 
+Here, I chose to use the **index**.  
 
 ```
 StarbucksIndex.barh("COUNTRY", "Difference")
@@ -199,7 +196,7 @@ StarbucksIndex.barh("COUNTRY", "Difference")
 
 ![difference cost of coffee](https://user-images.githubusercontent.com/113123766/205983370-18b0853b-0ef5-40d6-8636-e1166a140495.png)
 
-This graph is on a scale of -2 to 3, so the price of coffee fluxuates by about $5 depending on where you go. You can find the cheapest cup of coffee in columbia for $2.69, and you can get the most expensive cup in Luxembourg for $6.82.
+This graph is on a scale of **-2 to 3,** so the price of coffee fluxuates by about $5 depending on where you go.
 
 ```
 StarbucksIndex.scatter("Difference","MinWage/hour(CAD)")
@@ -211,15 +208,17 @@ StarbucksIndex.scatter("Difference","MinWage/hour(CAD)", fit_line = True)
 
 ![WageGraph_noline](https://user-images.githubusercontent.com/113123766/205983383-342dcd40-918c-47e1-bace-04a64c4cbf7d.png)
 
-This graph does not appear to have a strong correlation; however, if we add a line of best fit:
+This graph does **not** appear to have a _strong_ correlation; however, if we add a line of best fit:
 
 ![WageGraph_withline](https://user-images.githubusercontent.com/113123766/205983385-904417da-3f42-408e-bce5-e13b04bb5196.png)
 
-You can see that there is a linear association, as the price of coffee increases, so does the amount of money people make. There are a few outliers; however, the trend remains even without the occasional extreme example.
+You can see that there **_is_ a linear association**.
+As the price of coffee increases, so does the amount of money people make.
 
 # Why would Minimum Wage Effect The Price of Coffee?
 
-If you recall, I mentioned that Starbucks would be considered a **_luxury_** to most people. Since it is not a need, people will likely not purchase a coffee unless they can afford it. As such, people who make less money would pay less for a cup of coffee, and people who make more money would be more willing to spend more. 
+If you recall, I mentioned that Starbucks would be considered a **_luxury_** to most people. 
+Since it is not a need, people will likely not purchase a coffee unless they can afford it. As such, people who make less money would pay less for a cup of coffee, and people who make more money would be more willing to spend more. 
 There are several other factors at play as well, factors which may have a stronger correlation with the data, however, to a certain extent this relationship did prove to explain the results. 
 
 # Conclusion
