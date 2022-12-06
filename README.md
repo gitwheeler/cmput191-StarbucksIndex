@@ -5,9 +5,9 @@
 Purchasing Power Parity is essentially a concept that describes how goods and services should cost the same amount in different countries once exhange rates have been applied. In reality, no two items will be priced exactly the same, due to several factors, but using this concept, we can determine how pricey an item is in different countries compared to one another. 
 
 ## Starbucks
-> Starbucks coffee is a luxury item
-> Anywhere you go in the world, you can expect to order a standard Starbucks coffee and recieve the same product
-> You can find starbucks in several locations
+- Starbucks coffee is a luxury item
+- Anywhere you go in the world, you can expect to order a standard Starbucks coffee and recieve the same product
+- You can find starbucks in several locations
 
 ## So, How do the Prices Compare?
 
