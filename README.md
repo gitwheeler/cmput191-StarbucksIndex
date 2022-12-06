@@ -60,9 +60,9 @@ Min_Wage = Apply_to_all(Min_Wage, "Country")
 codes = Apply_to_all(codes, "Country")
 ```
 
-Here, I applied a function to each table with a column "Country" to ensure that the values in the column were all formatted in the same way using uppercase letters. This ensured that all values representing Canada were spelled "CANADA" and so on for each country in the tables.
+Each **row** in the **column** "country" was converted into **uppercase** as a **new array**. This array then replaced the previous column for country so all the graphs would have similar data
 
-**Then, I paused to do some additional data cleaning**
+ex. Canada, canada, CANADA == CANADA
 
 ```
 strarray= Min_Wage.column("Value")
@@ -72,16 +72,16 @@ floatarray=strarray
 
 Min_Wage = Min_Wage.append_column("Float_Values", floatarray)
 ```
+Min_Wage had to be converted from **str** to **float** values.
+
+All of our data has been CAD so far, but these values were USD...
 ```
 convertedCAD = Min_Wage.apply(lambda x: x * 1.34, "Float_Values")
 Min_Wage = Min_Wage.append_column('CAD_MinWage/hour', convertedCAD)
 Min_Wage = Min_Wage.drop("Value", "Float_Values", "Unit Code")
 ```
 
-The values previously returned by the Min_Wage table I created before were formatted as strings. In order to eventually do calculations using this information, I needed to conver the values into floats. 
-Following that, I had to convert the information from USD to CAD so that it would be the same currency as the cost of coffee which had been calculated earlier. 
-To do so, I used a lambda calculation to manually convert the values using the exchange rate between USD and CAD: 1.34.
-After doing these conversions, I was able to drop the extra columns I created or no longer had use of. 
+Using **lambda** and a  **set conversion rate** I changed each minimum wage rate from **USD to CAD**.
 
 ### joining the tables
 
@@ -91,18 +91,21 @@ almostfull = almostfull.join('COUNTRY', Min_Wage, 'COUNTRY')
 almostfull = almostfull.join("COUNTRY", codes, 'COUNTRY')
 ```
 
-One at a time, I joined each table to eachother using the values in the "Country" columns I had worked on before. Some graphs had different information; however, if the data was not present in each data source it was not stored in the new 'almostfull' table. Personally, I chose to lose this data because I only needed 10 countries (including Canada) in my final data source. 
+**COUNTRY** == the same for each table
+
+Some tables had different information. **I chose to lose data** that was not accounted for in all tables due to the fact the assignment did not require 76 countries, but only 10.
+
 After this step, there were 21 countries remaining in the data.
 
-**Now, there was still one table of information I had collected which was not included in my final table**
+# What about the other table?
 
 ```
 full= almostfull.join("Code", conversion_codes, "Currency\xa0Code")
 full= full.drop("incomeTax","corpTax","Currency","Number","Currency Description","Pay period", "Time")
 ```
-If you recall, one table did not have a value for "Country" but did have currency codes. This graph was essential to the problem as it contained the conversion rates of each currency to CAD.
-I was able to use the Currency Codes to join this graph to the others thanks to the 'codes' table which had been joined earlier. 
-Surprisingly, quite a bit of data was lost here as well.
+
+If you recall, one table did not have a value for "Country" but **did** have _currency codes_. This graph was essential to the problem as it contained the **conversion rates** of each currency to CAD.
+
 In the end, there was a total of **18 countries** in the data.
 
 # Now that All of the Information is together, we need to Clean it
