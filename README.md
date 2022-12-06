@@ -1,8 +1,6 @@
 # Purchasing Power Parity: The "Starbucks Index"
 ![sbucks](sbucks.png "sbucks")
 
-![difference cost of coffee](/difference cost of coffee.png "cost")
-
 ## Background
 Purchasing Power Parity is essentially a concept that describes how goods and services should cost the same amount in different countries once exhange rates have been applied. In reality, no two items will be priced exactly the same, due to several factors, but using this concept, we can determine how pricey an item is in different countries compared to one another. 
 ## Starbucks
@@ -212,9 +210,23 @@ Once again, I appended the new array I created to the original table.
 ```
 StarbucksIndex.barh("COUNTRY", "Difference")
 ```
-![WageGraph_noline](WageGraph_noling.png "Wage")
+
 ![difference cost of coffee](https://user-images.githubusercontent.com/113123766/205983370-18b0853b-0ef5-40d6-8636-e1166a140495.png)
+
+This graph is on a scale of -2 to 3, so the price of coffee fluxuates by about $5 depending on where you go. You can find the cheapest cup of coffee in columbia for $2.69, and you can get the most expensive cup in Luxembourg for $6.82.
+
+```
+StarbucksIndex.scatter("Difference","MinWage/hour(CAD)")
+StarbucksIndex.scatter("Difference","MinWage/hour(CAD)", fit_line = True)
+```
+
+
+# How does Minimum Wage effect 
+
 ![WageGraph_noline](https://user-images.githubusercontent.com/113123766/205983383-342dcd40-918c-47e1-bace-04a64c4cbf7d.png)
+
+
+
 ![WageGraph_withline](https://user-images.githubusercontent.com/113123766/205983385-904417da-3f42-408e-bce5-e13b04bb5196.png)
 
-test
+theme: minimal
