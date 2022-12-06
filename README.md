@@ -213,5 +213,8 @@ Once again, I appended the new array I created to the original table.
 StarbucksIndex.barh("COUNTRY", "Difference")
 ```
 ![WageGraph_noline](WageGraph_noling.png "Wage")
+![difference cost of coffee](https://user-images.githubusercontent.com/113123766/205983370-18b0853b-0ef5-40d6-8636-e1166a140495.png)
+![WageGraph_noline](https://user-images.githubusercontent.com/113123766/205983383-342dcd40-918c-47e1-bace-04a64c4cbf7d.png)
+![WageGraph_withline](https://user-images.githubusercontent.com/113123766/205983385-904417da-3f42-408e-bce5-e13b04bb5196.png)
 
 test
