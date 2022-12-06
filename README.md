@@ -3,8 +3,11 @@
 
 ## Background
 Purchasing Power Parity is essentially a concept that describes how goods and services should cost the same amount in different countries once exhange rates have been applied. In reality, no two items will be priced exactly the same, due to several factors, but using this concept, we can determine how pricey an item is in different countries compared to one another. 
+
 ## Starbucks
-Starbucks coffee is a luxury item that remains accessible without being an essential item. Anywhere you go in the world, you can expect to order a standard Starbucks coffee and recieve the same product; even if the other menu items may rotate across the board. Essentially, Starbucks is a brand that exports its base products around the globe. If you decided to travel to another country today, you could order the same comfort drink there as you could back home. 
+> Starbucks coffee is a luxury item
+> Anywhere you go in the world, you can expect to order a standard Starbucks coffee and recieve the same product
+> You can find starbucks in several locations
 
 ## So, How do the Prices Compare?
 
