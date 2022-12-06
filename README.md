@@ -212,5 +212,4 @@ StarbucksIndex.barh("COUNTRY", "Difference")
 ```
 ![WageGraph_noline](WageGraph_noling.png "Wage")
 
-![sbucks](sbucks.png "sbucks")
 test
