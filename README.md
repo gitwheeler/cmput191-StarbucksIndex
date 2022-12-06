@@ -1,5 +1,7 @@
 # Purchasing Power Parity: The "Starbucks Index"
-![sbucks](sbucks.png "sbucks")
+![sbucks](sbucks.png "sbucks")!
+[sbucks](https://user-images.githubusercontent.com/113123766/205853342-cc81b230-066e-412f-ac29-f3f06bb5cb2c.png)
+
 # Background
 Purchasing Power Parity is essentially a concept that describes how goods and services should cost the same amount in different countries once exhange rates have been applied. In reality, no two items will be priced exactly the same, due to several factors, but using this concept, we can determine how pricey an item is in different countries compared to one another. 
 # Starbucks
