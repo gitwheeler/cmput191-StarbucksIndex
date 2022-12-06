@@ -178,5 +178,12 @@ StarbucksIndex = StarbucksIndex.sort("Cost of Coffee(CAD)")
 Finally, I was satisfied with my data, especially since my data source was small enough that I could visually confirm that were were no odd values remaining in my data. (ex. no nan values, no strings, and no gaps in the data).
 As such, I made sure my table was renamed something that was relevant to the purpose of the project, and I organised it from least to most expensive coffee prices (CAD).
 
+The final column values were: 
+"Code"	"COUNTRY"	"MinWage/hour(CAD)" 	"Cost of Coffee(CAD)"	"Cost in og units w tax"
+
+Ex.
+"CAD"	"CANADA"	"14.1504" 	"4.15"	"4.36"
+
+
 # The data is Clean, Now What?
 ## Presenting the Graphs
