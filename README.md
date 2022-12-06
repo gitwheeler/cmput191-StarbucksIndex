@@ -221,12 +221,18 @@ StarbucksIndex.scatter("Difference","MinWage/hour(CAD)", fit_line = True)
 ```
 
 
-# How does Minimum Wage effect 
+# How does Minimum Wage Influence the Cost of a Coffee Globally?
 
 ![WageGraph_noline](https://user-images.githubusercontent.com/113123766/205983383-342dcd40-918c-47e1-bace-04a64c4cbf7d.png)
 
-
+This graph does not appear to have a strong correlation; however, if we add a line of best fit:
 
 ![WageGraph_withline](https://user-images.githubusercontent.com/113123766/205983385-904417da-3f42-408e-bce5-e13b04bb5196.png)
+
+You can see that there is a linear association, as the price of coffee increases, so does the amount of money people make. There are a few outliers; however, the trend remains even without the occasional extreme example.
+
+#Why would Minimum Wage Effect The Price of Coffee?
+
+If you recall, I mentioned that Starbucks would be considered a **_luxury_** to most people. 
 
 theme: minimal
