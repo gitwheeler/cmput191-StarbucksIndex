@@ -187,3 +187,26 @@ Ex.
 
 # The data is Clean, Now What?
 ## Presenting the Graphs
+
+The first graph required should display the difference of prices in other countries compared to Canada.
+As such, I first needed to calculate the difference
+
+```
+def difference(country):
+  canada = StarbucksIndex.column("Cost of Coffee(CAD)")[7]
+  country = country - canada
+  return country
+
+subtraction = StarbucksIndex.apply(difference,"Cost of Coffee(CAD)")
+
+StarbucksIndex = StarbucksIndex.append_column("Difference", subtraction)
+```
+
+Here, I chose to use the index of Canada, as the data had already been sorted. However, this code would need to be changed to accomodate the data if the table were presented in any other order. 
+For our current purposes, I was able to simply use the index of the graph to select for the value of canadian money. 
+Then, using apply, I was able to calculate the difference for each country as it compared to the price of Canadian Coffee. 
+Once again, I appended the new array I created to the original table. 
+
+```
+StarbucksIndex.barh("COUNTRY", "Difference")
+```
