@@ -115,7 +115,7 @@ almostfull = almostfull.join("COUNTRY", codes, 'COUNTRY')
 One at a time, I joined each table to eachother using the values in the "Country" columns I had worked on before. Some graphs had different information; however, if the data was not present in each data source it was not stored in the new 'almostfull' table. Personally, I chose to lose this data because I only needed 10 countries (including Canada) in my final data source. 
 After this step, there were 21 countries remaining in the data.
 
-** Now, there was still one table of information I had collected which was not included in my final table**
+**Now, there was still one table of information I had collected which was not included in my final table**
 
 ```
 full= almostfull.join("Code", conversion_codes, "Currency\xa0Code")
