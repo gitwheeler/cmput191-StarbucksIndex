@@ -56,7 +56,72 @@ Min_Wage = Table.read_table('/content/drive/MyDrive/Colab Notebooks/hourlywage.c
 Min_Wage= Min_Wage.drop("COUNTRY","SERIES","Series","PERIOD","TIME","Unit","PowerCode Code","PowerCode","Reference Period Code", "Reference Period", "Flag Codes", "Flags")
 ```
 
-In the hopes of not overwhelming the audience, I hoped to present the following two sources together. I web-scraped which currency codes were accociated with each currency in the first code cell and I also collected information that I believed may partially explain why the prices were different across the globe in the second code cell.
+In the hopes of not overwhelming the audience, I hoped to present the following two sources together. I web-scraped which currency codes were accociated with each currency in the first code cell.
+I also collected information that I believed may partially explain why the prices were different across the globe in the second code cell.
 The second code contained a lot of irrelevant information, so I dropped quite a few columns of information. The remaining columns were "Country" "Pay Peroid"(hourly) "Time"(2021) "Unit Code"(USD) and "Value"the actual amount
 
 **Clearly, this data needs to be cleaned and combined in order for us to gleam any relevant information from it.**
+
+**So far, almost every graph I selected had at least one column in common:** **_Country_**
+There was one exception, as mentioned above, and it will be addressed later
+
+```
+def UPCOUNTRY(column):
+  newvariable = column.upper()
+  return newvariable
+
+def Apply_to_all(table,value):
+  uppercase = table.apply(UPCOUNTRY, value)
+  table = table.append_column("COUNTRY", uppercase).drop(value)
+  return table
+
+costofacoffee = Apply_to_all(costofacoffee,'Country')
+tax_rates = Apply_to_all(tax_rates, "country")
+Min_Wage = Apply_to_all(Min_Wage, "Country")
+codes = Apply_to_all(codes, "Country")
+```
+
+Here, I applied a function to each table with a column "Country" to ensure that the values in the column were all formatted in the same way using uppercase letters. This ensured that all values representing Canada were spelled "CANADA" and so on for each country in the tables.
+
+**Then, I paused to do some additional data cleaning**
+
+```
+strarray= Min_Wage.column("Value")
+for value in strarray:
+  value = float(value)
+floatarray=strarray
+
+Min_Wage = Min_Wage.append_column("Float_Values", floatarray)
+```
+```
+convertedCAD = Min_Wage.apply(lambda x: x * 1.34, "Float_Values")
+Min_Wage = Min_Wage.append_column('CAD_MinWage/hour', convertedCAD)
+Min_Wage = Min_Wage.drop("Value", "Float_Values", "Unit Code")
+```
+
+The values previously returned by the Min_Wage table I created before were formatted as strings. In order to eventually do calculations using this information, I needed to conver the values into floats. 
+Following that, I had to convert the information from USD to CAD so that it would be the same currency as the cost of coffee which had been calculated earlier. 
+To do so, I used a lambda calculation to manually convert the values using the exchange rate between USD and CAD: 1.34.
+After doing these conversions, I was able to drop the extra columns I created or no longer had use of. 
+
+### joining the tables
+
+```
+almostfull = costofacoffee.join('COUNTRY', tax_rates, 'COUNTRY')
+almostfull = almostfull.join('COUNTRY', Min_Wage, 'COUNTRY')
+almostfull = almostfull.join("COUNTRY", codes, 'COUNTRY')
+```
+
+One at a time, I joined each table to eachother using the values in the "Country" columns I had worked on before. Some graphs had different information; however, if the data was not present in each data source it was not stored in the new 'almostfull' table. Personally, I chose to lose this data because I only needed 10 countries (including Canada) in my final data source. 
+After this step, there were 21 countries remaining in the data.
+
+**Now, there was still one table of information I had collected which was not included in my final table**
+
+```
+full= almostfull.join("Code", conversion_codes, "Currency\xa0Code")
+full= full.drop("incomeTax","corpTax","Currency","Number","Currency Description","Pay period", "Time")
+```
+If you recall, one table did not have a value for "Country" but did have currency codes. This graph was essential to the problem as it contained the conversion rates of each currency to CAD.
+I was able to use the Currency Codes to join this graph to the others thanks to the 'codes' table which had been joined earlier. 
+Surprisingly, quite a bit of data was lost here as well.
+In the end, there was a total of **18 countries** in the data.
