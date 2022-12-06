@@ -120,8 +120,11 @@ def adub(clean):
   return clean
 ```
 
-Scrubadub removed the first index from a string. This was intended to remove any values such as a dollar sign from currency values. Following this removal, the previous string is changed to a float value so the calculations can be made using the data.
-Adub is very similar; however, it is for columns that did not contain currency indicators such as a dollar sign. This will return numerical values as floats.
+# $4.25 vs 4.25
+**str vs float**
+
+
+>**Cost** and **Rate**
 
 ```
 clean = full.apply(scrubadub,"Cost (CAD$)")
@@ -130,7 +133,9 @@ cleaner = full.apply(adub,"Rate")
 full = full.append_column("Cost of Coffee",clean).drop("Cost (CAD$)")
 full = full.append_column("Rate",cleaner)
 ```
-As such, for the colums in full which needed to be cleaned, I ran the array values of the columns through the functions and appended them back into the table.
+
+# My data is fairly clean, but since my source was CAD, I don't have every value required in the the assignment.
+# So, let's add it in!
 
 ```
 def conversion(value, rate, tax):
@@ -148,23 +153,22 @@ full = full.drop("salesTax","Rate","Ranking $$coffee")
 full = full.relabel("Cost of Coffee", "Cost of Coffee(CAD)")
 full = full.relabel("CAD_MinWage/hour", "MinWage/hour(CAD)")
 ```
-In order to meet some of the requirements of the assignment, I had to 'backtrack' a bit. 
 
-Here, I am taking the cost of a coffee in CAD, converting it into it's original units, and then adding the price of sales tax to the value (rounded to 2 decimal places). Once I had the new information I once again dropped any irrelevant data that was no longer needed to make any conversions. 
+**How much does coffee cost in the _original_ currency with taxes?**
 
 ```
 StarbucksIndex = full
 StarbucksIndex = StarbucksIndex.sort("Cost of Coffee(CAD)")
 ```
 
-Finally, I was satisfied with my data, especially since my data source was small enough that I could visually confirm that were were no odd values remaining in my data. (ex. no nan values, no strings, and no gaps in the data).
-As such, I made sure my table was renamed something that was relevant to the purpose of the project, and I organised it from least to most expensive coffee prices (CAD).
+With 18 rows, I could easily **visually confirm** that my data had no more flaws.
+ex. nan, str, gaps in the data
 
 The final column values were: 
-"Code"	"COUNTRY"	"MinWage/hour(CAD)" 	"Cost of Coffee(CAD)"	"Cost in og units w tax"
+**"Code"	"COUNTRY"	"MinWage/hour(CAD)" 	"Cost of Coffee(CAD)"	"Cost in og units w tax"**
 
 Ex.
-"CAD"	"CANADA"	"14.1504" 	"4.15"	"4.36"
+**"CAD"	"CANADA"	"14.1504" 	"4.15"	"4.36"**
 
 
 # The data is Clean, Now What?
