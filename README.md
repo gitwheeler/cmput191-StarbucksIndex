@@ -125,3 +125,45 @@ If you recall, one table did not have a value for "Country" but did have currenc
 I was able to use the Currency Codes to join this graph to the others thanks to the 'codes' table which had been joined earlier. 
 Surprisingly, quite a bit of data was lost here as well.
 In the end, there was a total of **18 countries** in the data.
+
+#Now that All of the Information is together, we need to Clean it
+
+```
+def scrubadub(clean):
+  clean = clean[1:]
+  clean = float(clean)
+  return clean
+def adub(clean):
+  clean = float(clean)
+  return clean
+```
+
+Scrubadub removed the first index from a string. This was intended to remove any values such as a dollar sign from currency values. Following this removal, the previous string is changed to a float value so the calculations can be made using the data.
+Adub is very similar; however, it is for columns that did not contain currency indicators such as a dollar sign. This will return numerical values as floats.
+
+```
+clean = full.apply(scrubadub,"Cost (CAD$)")
+cleaner = full.apply(adub,"Rate")
+
+full = full.append_column("Cost of Coffee",clean).drop("Cost (CAD$)")
+full = full.append_column("Rate",cleaner)
+```
+As such, for the colums in full which needed to be cleaned, I ran the array values of the columns through the functions and appended them back into the table.
+
+```
+def conversion(value, rate, tax):
+  value = value / rate
+  tax = tax / 100
+  tax = tax * value
+  value = value + tax
+  value = round(value,2)
+  return value
+```
+```
+Conversion = full.apply(conversion,"Cost of Coffee","Rate","salesTax")
+full = full.append_column("Cost in og units w tax", Conversion)
+full = full.drop("salesTax","Rate","Ranking $$coffee")
+full = full.relabel("Cost of Coffee", "Cost of Coffee(CAD)")
+full = full.relabel("CAD_MinWage/hour", "MinWage/hour(CAD)")
+```
+Then, 
