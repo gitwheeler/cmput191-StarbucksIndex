@@ -210,3 +210,5 @@ Once again, I appended the new array I created to the original table.
 ```
 StarbucksIndex.barh("COUNTRY", "Difference")
 ```
+![difference cost of coffee](difference cost of coffee.png "difference")
+test
